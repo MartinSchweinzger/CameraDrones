@@ -1,0 +1,24 @@
+<launch>
+    <param name="use_sim_time" value="true" />
+
+    <!-- conversion of depth images to pointcloud + camera-internal tf -->
+    <include file="$(find astra_camera)/launch/astra.launch">
+	    <arg name="load_driver" value="false" />
+	    <arg name="publish_tf"  value="true" />
+    </include>
+
+    <!-- Show in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz"
+        args="-d $(env HOME)/CameraDrones/cdl_demo_catkin_ws_src/rviz_config.rviz" />
+        
+    <!-- calibration --> 
+    <node pkg="tf2_ros" type="static_transform_publisher" name="drone_to_camera" 
+            args="0.050 -0.007 -0.0375 0 -0.135625 0.0175 drone_1/base_link camera_link" />
+
+    <!-- obstacle map -->
+    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+    	<param name="resolution" value="0.1" />
+    	<param name="frame_id" type="string" value="world" />
+        <remap from="cloud_in" to="/camera/depth/points" />
+    </node>
+</launch>
