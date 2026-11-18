@@ -1,0 +1,85 @@
+# How to setup
+
+## Rosbag
+Import the data bag from TU cloud to **~/CameraDrones/cdl_demo_catkin_ws_src**
+ - 2019-11-18-19-37-10.bag: https://cloud.tugraz.at/index.php/s/WqiC7LQgDixP8kp
+
+## Install octomap and point cloud tools
+```bash
+sudo apt update
+sudo apt install ros-noetic-octomap-mapping ros-noetic-octomap-rviz-plugins ros-noetic-rgbd-launch ros-noetic-depth-image-proc libuvc-dev
+
+rosdep update
+cd ~/CameraDrones/cdl_demo_catkin_ws_src
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+If it doesn't work because the signing key (EXPKEYSIG) expired run:
+```bash
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+# Assignment 1
+
+## Inspect 2019-11-18-19-37-10.bag
+```bash
+rosbag info 2019-11-18-19-37-10.bag
+path:        2019-11-18-19-37-10.bag
+version:     2.0
+duration:    3:39s (219s)
+start:       Nov 18 2019 19:37:10.68 (1574102230.68)
+end:         Nov 18 2019 19:40:49.85 (1574102449.85)
+size:        1.6 GB
+messages:    53697
+compression: none [1102/1102 chunks]
+types:       geometry_msgs/PoseStamped [d3812c3cbc69362b77dc0b19b345f8f5]
+             sensor_msgs/CameraInfo    [c9a58c1b0b154e0e6da7578cb991d214]
+             sensor_msgs/Image         [060021388200f6f0f447d0fcd9c64743]
+             tf2_msgs/TFMessage        [94810edda583a504dfda3829e70d7eec]
+topics:      /camera/color/camera_info    1096 msgs    : sensor_msgs/CameraInfo   
+             /camera/color/image_raw      1096 msgs    : sensor_msgs/Image        
+             /camera/depth/camera_info    1075 msgs    : sensor_msgs/CameraInfo   
+             /camera/depth/image_raw      1075 msgs    : sensor_msgs/Image        
+             /mocap_node/drone_1/pose    24675 msgs    : geometry_msgs/PoseStamped
+             /tf                         24675 msgs    : tf2_msgs/TFMessage       
+             /tf_static                      5 msgs    : tf2_msgs/TFMessage        (5 connections)
+```
+
+## Run lauch file
+```bash
+roslaunch ~/CameraDrones/launch/octomap_server.launch
+rosbag play --clock --rate=0.25 ~/CameraDrones/cdl_demo_catkin_ws_src/bags/2019-11-18-19-37-10.bag
+```
+
+To create the octomap, it is important to first launch and run a whole simulation. However, you shouldn't have to do it,
+as you can find it in /CameraDrones/report/ass1
+```bash
+rosrun octomap_server octomap_saver ~/CameraDrones/report/ass1/map_10cm.bt
+```
+
+## Get the map
+```bash
+roscore
+rosrun octomap_server octomap_server_node ~/CameraDrones/report/ass1/map_10cm.bt
+rviz
+```
+
+
+# Useful byobu
+For navigation hot keys, see the help page with Shift-F1:
+
+F2 Create a new window
+Shift-F2 Create a horizontal split
+Ctrl-F2 Create a vertical split
+Ctrl-Shift-F2 Create a new session
+F3 and F4 Move focus among windows
+Alt-Left/Right Move focus among windows
+Alt-Up/Down Move focus among sessions
+Shift-Left/Right/Up/Down Move focus among splits
+Shift-F3/F4 Move focus among splits
+Ctrl-F3/F4 Move a split
+Ctrl-Shift-F3/F4 Move a window
+Shift-Alt-Left/Right/Up/Down Resize a split
+
+Link: https://askubuntu.com/questions/522315/byobu-changing-tabs
