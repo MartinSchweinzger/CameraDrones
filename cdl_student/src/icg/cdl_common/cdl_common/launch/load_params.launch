@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="file" default="params.yaml" />
+  <arg name="ns" default="tello" />
+  <group ns="$(arg ns)">
+    <rosparam
+      command="load"
+      file="$(arg file)"
+    />
+  </group>
+</launch>

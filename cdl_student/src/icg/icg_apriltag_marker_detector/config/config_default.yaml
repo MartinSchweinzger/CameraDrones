@@ -1,0 +1,14 @@
+tag_family: "Tag36h11"
+possible_markers: {
+# id: tag_size (meter)
+# ** tello test **
+  14: 0.22,
+  16: 0.22,
+  18: 0.22,
+# -- tello test --
+  30: 0.5072,
+  31: 0.5072,
+  32: 0.5072,
+  33: 0.5072,
+  34: 0.5072
+}

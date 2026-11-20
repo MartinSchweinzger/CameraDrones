@@ -1,0 +1,120 @@
+# RAFCON SM "Fly-SM", 1001-1099;
+# commands: 1001-1049
+# states: 1051-1099
+
+from std_msgs.msg import Int32
+# import std_msgs
+import time
+
+from enum import Enum
+
+# definition of states and commands as integers
+class States(Enum):
+
+        MAV_START_MISSION = 1
+        MAV_WAIT = 2
+        #MAV_ABORT = 49, # UNUSED
+        MAV_STARTING_MISSION = 50
+        MAV_IDLE = 51
+        MAV_WAITING = 52
+        MAV_WAITING_DONE = 53
+        MAV_ABORTED = 99
+        # NAVI - navigation_controller
+        NAVI_HOVER = 100
+        NAVI_STOP = 101
+        NAVI_POINT_TO_POINT_NAVIGATION = 102
+        NAVI_FLY_TRAJECTORY = 103
+        #NAVI_TAKE_OFF = 104
+        #NAVI_LAND = 105
+        NAVI_ABORT = 106
+        NAVI_IDLE = 150
+        NAVI_AWAITING_COMMANDS = 151
+        NAVI_HOVERING = 152
+        NAVI_FLYING_POINT_TO_POINT = 153
+        NAVI_WAYPOINT_REACHED = 154
+        NAVI_FLYING_TRAJECTORY = 155
+        NAVI_TRAJECTORY_FINISHED = 156
+        NAVI_ABORTED = 157
+        #NAVI_LANDING = 158
+        #NAVI_FLYING_IDLE = 159
+        #NAVI_TAKING_OFF = 160
+        # trajectory planning
+        PLANNER_SET_IDLE = 200
+        PLANNER_PLAN_TRAJECTORY = 201
+        PLANNER_SMOOTH_TRAJECTORY = 202
+        PLANNER_IDLE = 250
+        PLANNER_PLANNING_TRAJECTORY = 251
+        PLANNER_TRAJECTORY_PLANNED = 252
+        PLANNER_SMOOTHING_TRAJECTORY = 253
+        PLANNER_TRAJECTORY_SMOOTHED = 254
+        # task_scheduler_2
+        TASK_SCHEDULER_2_SET_IDLE = 300
+        TASK_SCHEDULER_2_START = 301
+        TASK_SCHEDULER_2_IDLE = 350
+        TASK_SCHEDULER_2_STARTED = 351 
+        TASK_SCHEDULER_2_STOPPED = 352
+        # icg_rosbag_recorder
+        ROSBAG_RECORDER_START   = 1101
+        ROSBAG_RECORDER_STOP    = 1102
+        ROSBAG_RECORDER_RESTART = 1103
+        ROSBAG_RECORDER_LOAD_CONFIG_FILE = 1104
+        ROSBAG_RECORDER_UNKNOWN      = 1150
+        ROSBAG_RECORDER_IDLE         = 1151
+        ROSBAG_RECORDER_RUNNING      = 1152
+        ROSBAG_RECORDER_START_FAILED = 1153
+        ROSBAG_RECORDER_STOP_FAILED  = 1154
+        ROSBAG_RECORDER_ABORTED      = 1155
+        ROSBAG_RECORDER_CONFIG_FILE_LOADED = 1156
+        # fly_sm
+        #   (fly_sm) commands:
+        FLY_SM_TAKE_OFF = 1001
+        FLY_SM_LAND = 1002
+        FLY_SM_HOVER = 1003
+        FLY_SM_FLY_FORWARD = 1004
+        FLY_SM_FLY_BACKWARD = 1005
+        FLY_SM_FLY_UP = 1006
+        FLY_SM_FLY_DOWN = 1007
+        FLY_SM_FLY_LEFT = 1008
+        FLY_SM_FLY_RIGHT = 1009
+        FLY_SM_ROTATE_CW = 1010
+        FLY_SM_ROTATE_CCW = 1011
+        FLY_SM_RELEASE_CONTROL = 1012
+        FLY_SM_INITIALIZE = 1013
+        FLY_SM_SET_FAST_MODE = 1014
+        FLY_SM_SET_SLOW_MODE = 1015
+        # FLY_SM_FLY_ABORT = 1020
+        #   (fly_sm) states:
+        FLY_SM_INITIALIZING = 1051
+        FLY_SM_INITIALIZED  = 1052
+        FLY_SM_LANDED         = 1053
+        FLY_SM_TAKING_OFF     = 1054
+        FLY_SM_HOVERING = 1055
+        FLY_SM_LANDING = 1056
+        FLY_SM_FLYING = 1057
+        FLY_SM_CONTROL_RELEASED = 1058
+        FLY_SM_FAST_MODE_SET = 1059
+        FLY_SM_SLOW_MODE_SET = 1060
+        FLY_SM_ABORTED = 1099
+        # face_detector
+        FACE_DETECTOR_START = 1201
+        FACE_DETECTOR_STOP = 1202
+        FACE_DETECTOR_UNKNOWN = 1250
+        FACE_DETECTOR_IDLE = 1251
+        FACE_DETECTOR_RUNNING = 1252
+        FACE_DETECTOR_START_FAILED = 1253
+        FACE_DETECTOR_STOP_FAILED = 1254
+        FACE_DETECTOR_ABORTED = 1255
+        # icg_image_saver
+        IMAGESAVER_SAVE_IMAGE  = 1701
+        IMAGESAVER_SAVED_IMAGE = 1751
+        # apriltag_detector
+        APRILTAG_SET_IDLE = 600
+        APRILTAG_SEARCH_MARKERS = 604
+        APRILTAG_IDLE = 650
+        APRILTAG_SEARCHING_MARKERS = 658
+
+# createMsg > integer to ROS msg of the type (std_msgs::Int32) > that you can publish ROS
+def createMsg(val):
+	msg = Int32()
+	msg.data = val
+	return msg

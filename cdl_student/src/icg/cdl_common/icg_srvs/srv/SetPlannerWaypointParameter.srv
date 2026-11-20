@@ -1,0 +1,8 @@
+Header header
+string name # (optional) waypoint name
+geometry_msgs/Point goal_position # 3D point in [m]
+#float64 yaw # yaw/heading in [rad]
+#bool absolute_coords # 'true' if the position is provided in absolute coordinates, 'false' when it is provided in relative coordinates
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages

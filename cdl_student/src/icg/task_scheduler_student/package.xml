@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>task_scheduler_student</name>
+  <version>1.0.0</version>
+  <description>The task_scheduler_student package that allows the robot drone to plan paths through
+               a maze map via detecting markers for waypoint and heading information</description>
+
+  <maintainer email="jun.zhang@tugraz.at">Jun Zhang</maintainer>
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>icg_msgs</build_depend>
+  <build_depend>icg_srvs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>icg_msgs</build_export_depend>
+  <build_export_depend>icg_srvs</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>tf</build_export_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>icg_msgs</exec_depend>
+  <exec_depend>icg_srvs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>tf</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

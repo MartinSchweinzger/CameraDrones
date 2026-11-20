@@ -1,0 +1,17 @@
+<!-- 
+  Launcher for the trajectory_visualization node, to allow topic remapping
+  and setting the trajectory color using parameters.
+-->
+<launch>
+  <arg name="octomap_file" default="maze_synthetic.bt" />
+  <arg name="drone_name" default="tello"/>
+  <arg name="input_topic" default="/mocap_node/$(arg drone_name)/transform_stamped" />
+  <arg name="runtime" default="5.0"/>
+  
+  <node pkg="dla2_path_planner" type="dla2_path_planner_ros_node" name="path_planner" 
+    args="--runtime $(arg runtime) --planner RRTStar -o WeightedLengthAndClearanceCombo -f planner_trajectory.txt --info 2 --bt_file $(arg octomap_file)" output="screen">
+      <remap from="~current_tf" to="$(arg input_topic)" />
+      <remap from="~in" to="task_scheduler/out" />
+			<remap from="~out" to="task_scheduler/in" />
+  </node>
+</launch>

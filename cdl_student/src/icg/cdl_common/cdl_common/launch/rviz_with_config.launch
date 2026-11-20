@@ -1,0 +1,4 @@
+<launch>
+  <arg name="config_file" default="/opt/ros/melodic/share/rviz/default.rviz" />
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg config_file)" />
+</launch>

@@ -1,0 +1,22 @@
+<package>
+  <name>icg_srvs</name>
+  <version>0.0.1</version>
+  <description>Common service definitions.</description>
+  <maintainer email="jesus.pestana@pro2future.at">Jesus Pestana</maintainer>
+  <license>TODO</license>
+
+  <url>TODO</url>
+  <author>Jesus Pestana</author>
+  <author email="jesus.pestana@pro2future.at">Jesus Pestana</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <build_depend>mav_planning_msgs</build_depend>
+  <run_depend>mav_planning_msgs</run_depend>
+  <build_depend>icg_msgs</build_depend>
+  <run_depend>icg_msgs</run_depend>
+</package>

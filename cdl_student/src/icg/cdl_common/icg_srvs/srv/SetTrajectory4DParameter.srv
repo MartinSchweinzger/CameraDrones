@@ -1,0 +1,7 @@
+Header header
+string name # parameter name
+mav_planning_msgs/PolynomialTrajectory4D traj4d
+#bool absolute_coords # (for now assumed 'true') [TODO][FUTURE] 'true' if the position is provided in absolute coordinates, 'false' when it is provided in relative coordinates
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages

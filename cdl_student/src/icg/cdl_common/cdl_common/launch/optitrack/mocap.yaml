@@ -1,0 +1,17 @@
+#
+# Definition of all trackable objects
+# Identifier corresponds to Trackable ID set in Tracking Tools
+#
+general:
+        parent_frame_id: world
+rigid_bodies:
+    '19':
+        transform_stamped: tello/transform_stamped
+        pose: tello/pose
+        pose2d: tello/ground_pose
+        child_frame_id: tello/base_link
+optitrack_config:
+        version: [3,1,0,0]
+        multicast_address: 239.255.42.99
+        command_port: 1510
+        data_port: 1511

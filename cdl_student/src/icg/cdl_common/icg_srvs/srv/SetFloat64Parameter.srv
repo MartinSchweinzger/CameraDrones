@@ -1,0 +1,5 @@
+string name # parameter name
+float64 data # parameter value
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages

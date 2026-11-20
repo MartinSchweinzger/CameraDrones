@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="config_file" default="config_default.yaml"/>
+    <node pkg="icg_apriltag_marker_detector" type="icg_apriltag_marker_detector_ros_node" name="apriltag_detector" output="screen" launch-prefix="nice -n 10">
+	    <remap from="~in" to="task_scheduler/out" />
+	    <remap from="~out" to="task_scheduler/in" />
+	    <remap from="~image_raw" to="camera/image_raw" />
+        <param name="~config_file" value="$(arg config_file)" />
+	</node>
+</launch>

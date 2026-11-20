@@ -1,0 +1,7 @@
+<launch>
+    <!--- Trajectory sampler -->
+    <node name="trajectory_sampler" pkg="mav_trajectory_generation_example" type="dla3_trajectory_sampler" output="screen">
+       <remap from="~smooth_trajectory4d" to="/trajectory_generator/smooth_trajectory"/>
+    </node>
+
+</launch>

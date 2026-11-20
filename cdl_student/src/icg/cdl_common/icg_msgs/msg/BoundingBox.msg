@@ -1,0 +1,10 @@
+float64 probability
+int16 class_id
+string class_name
+int64 x_min
+int64 y_min
+int64 x_max
+int64 y_max
+float64 u_DX
+float64 u_DY
+float64 Z_est

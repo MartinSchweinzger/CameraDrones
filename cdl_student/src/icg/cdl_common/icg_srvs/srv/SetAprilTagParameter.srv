@@ -1,0 +1,8 @@
+uint64 id                 # id of AprilTag (not necessarily unique)
+---
+geometry_msgs/Point goal_position   # 3D point in [m]
+float64 yaw                         # yaw/heading in [rad]
+bool success                        # indicate successful run of triggered service
+string message                      # informational, e.g. for error messages
+
+

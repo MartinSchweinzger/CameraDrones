@@ -1,0 +1,62 @@
+#
+# Definition of all trackable objects
+# Identifier corresponds to Trackable ID set in Tracking Tools
+#
+general:
+        parent_frame_id: world
+rigid_bodies:
+    '16':
+        transform_stamped: drone_1/transform_stamped
+        pose: drone_1/pose
+        pose2d: drone_1/ground_pose
+        child_frame_id: drone_1/base_link
+    '19':
+        transform_stamped: tello/transform_stamped
+        pose: tello/pose
+        pose2d: tello/ground_pose
+        child_frame_id: tello/base_link
+    '2':
+        transform_stamped: calib_pattern/transform_stamped
+        pose: calib_pattern/pose
+        pose2d: calib_pattern/ground_pose
+        child_frame_id: calib_pattern/base_link
+    '7':
+        transform_stamped: drone_7/transform_stamped
+        pose: drone_7/pose
+        pose2d: drone_7/ground_pose
+        child_frame_id: drone_7/base_link
+    '12':
+        transform_stamped: target_l/transform_stamped
+        pose: target_l/pose
+        pose2d: target_l/ground_pose
+        child_frame_id: target_l/base_link
+    '1008':
+        transform_stamped: tello_test/transform_stamped
+        pose: tello_test/pose
+        pose2d: tello_test/ground_pose
+        child_frame_id: tello_test/base_link
+    '998':
+        transform_stamped: checkerboard/transform_stamped
+        pose: checkerboard/pose
+        pose2d: checkerboard/ground_pose
+        child_frame_id: checkerboard/base_link
+    '1014':
+        transform_stamped: charuco/transform_stamped
+        pose: charuco/pose
+        pose2d: charuco/ground_pose
+        child_frame_id: charuco/base_link
+    '1010':
+        transform_stamped: cameraSetup/transform_stamped
+        pose: cameraSetup/pose
+        pose2d: cameraSetup/ground_pose
+        child_frame_id: cameraSetup/base_link
+    '1004':
+        transform_stamped: Areal_marker/transform_stamped
+        pose: Areal_marker/pose
+        pose2d: Areal_marker/ground_pose
+        child_frame_id: Areal_marker/base_link
+optitrack_config:
+        version: [3,1,0,0]
+        multicast_address: 239.255.42.99
+        command_port: 1510
+        data_port: 1511
